@@ -1,0 +1,71 @@
+<ContentPage
+    x:Class="CountryExplorer.Views.CountriesPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Country Explorer">
+
+    <Grid Padding="15" RowDefinitions="Auto,Auto,Auto,Auto,Auto,*" RowSpacing="10">
+
+        <Label Grid.Row="0"
+               Text="Country Explorer"
+               FontSize="24"
+               HorizontalOptions="Center" />
+
+        <SearchBar Grid.Row="1"
+                   x:Name="SearchBox"
+                   Placeholder="Search by country name"
+                   TextChanged="OnSearchTextChanged" />
+
+        <Grid Grid.Row="2" ColumnDefinitions="*,Auto" ColumnSpacing="10">
+            <Picker x:Name="RegionPicker"
+                    Grid.Column="0"
+                    Title="Filter by region"
+                    SelectedIndexChanged="OnRegionChanged" />
+            <Button Grid.Column="1"
+                    Text="Reload"
+                    Clicked="OnReloadClicked" />
+        </Grid>
+
+        <ActivityIndicator Grid.Row="3"
+                            x:Name="LoadingIndicator"
+                            IsRunning="False"
+                            IsVisible="False"
+                            HorizontalOptions="Center" />
+
+        <Label Grid.Row="4"
+               x:Name="StatusLabel"
+               HorizontalOptions="Center"
+               FontAttributes="Bold" />
+
+        <CollectionView Grid.Row="5"
+                        x:Name="CountriesCollectionView"
+                        SelectionMode="Single"
+                        SelectionChanged="OnCountrySelected">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border Stroke="Gray"
+                            StrokeThickness="1"
+                            Padding="10"
+                            Margin="5"
+                            StrokeShape="RoundRectangle 8">
+                        <Grid ColumnDefinitions="80,*" ColumnSpacing="12">
+                            <Image Grid.Column="0"
+                                   Source="{Binding FlagUrl}"
+                                   Aspect="AspectFit"
+                                   HeightRequest="55"
+                                   WidthRequest="80" />
+
+                            <VerticalStackLayout Grid.Column="1" Spacing="2">
+                                <Label Text="{Binding CommonName}" FontAttributes="Bold" FontSize="16" />
+                                <Label Text="{Binding CapitalDisplay, StringFormat='Capital: {0}'}" FontSize="12" />
+                                <Label Text="{Binding Region}" FontSize="12" />
+                                <Label Text="{Binding PopulationDisplay, StringFormat='Population: {0}'}" FontSize="12" />
+                            </VerticalStackLayout>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </Grid>
+</ContentPage>

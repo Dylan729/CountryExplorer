@@ -1,0 +1,49 @@
+<ContentPage
+    x:Class="CountryExplorer.Views.CountryDetailsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Country Details">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="12">
+
+            <Image x:Name="FlagImage"
+                   Aspect="AspectFit"
+                   HeightRequest="140"
+                   HorizontalOptions="Center" />
+
+            <Label x:Name="CommonNameLabel"
+                   FontSize="26"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center" />
+
+            <Label x:Name="OfficialNameLabel"
+                   FontSize="14"
+                   TextColor="Gray"
+                   HorizontalOptions="Center" />
+
+            <BoxView HeightRequest="1" Color="LightGray" Margin="0,10" />
+
+            <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto" RowSpacing="10" ColumnSpacing="10">
+                <Label Grid.Row="0" Grid.Column="0" Text="Capital:" FontAttributes="Bold" />
+                <Label Grid.Row="0" Grid.Column="1" x:Name="CapitalLabel" />
+
+                <Label Grid.Row="1" Grid.Column="0" Text="Region:" FontAttributes="Bold" />
+                <Label Grid.Row="1" Grid.Column="1" x:Name="RegionLabel" />
+
+                <Label Grid.Row="2" Grid.Column="0" Text="Subregion:" FontAttributes="Bold" />
+                <Label Grid.Row="2" Grid.Column="1" x:Name="SubregionLabel" />
+
+                <Label Grid.Row="3" Grid.Column="0" Text="Population:" FontAttributes="Bold" />
+                <Label Grid.Row="3" Grid.Column="1" x:Name="PopulationLabel" />
+
+                <Label Grid.Row="4" Grid.Column="0" Text="Currencies:" FontAttributes="Bold" />
+                <Label Grid.Row="4" Grid.Column="1" x:Name="CurrenciesLabel" LineBreakMode="WordWrap" />
+
+                <Label Grid.Row="5" Grid.Column="0" Text="Languages:" FontAttributes="Bold" />
+                <Label Grid.Row="5" Grid.Column="1" x:Name="LanguagesLabel" LineBreakMode="WordWrap" />
+            </Grid>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
